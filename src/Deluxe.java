@@ -1,3 +1,7 @@
+/**
+ * Deluxe: Object of a deluxe type room
+ */
+
 public class Deluxe {
     int deluxeAdultCost = 50;
     int doubleChildCost = 25;

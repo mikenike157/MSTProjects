@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+ * CustomerBook: Holds the list of previous customers and runs operations manipulating that list
+ */
 public class CustomerBook {
     ArrayList<Customer> customerList;
     public CustomerBook() {

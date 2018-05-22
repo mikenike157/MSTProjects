@@ -1,5 +1,9 @@
 import java.sql.*;
 
+/**
+ * SQLServer: Helper class to connect to database and preform operations and queries on the database
+ */
+
 public class SQLServer {
     Connection conn = null;
     public SQLServer() {

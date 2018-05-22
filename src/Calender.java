@@ -1,3 +1,7 @@
+/**
+ * Calender: Class that holds all of the hotel reservations and does operations on dates
+ */
+
 public class Calender {
     int numSingle;
     int numDouble;

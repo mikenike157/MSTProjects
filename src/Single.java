@@ -1,3 +1,7 @@
+/**
+ * Single: Object of a single type room
+ */
+
 public class Single {
     int singleAdultCost = 10;
     int singleChildCost = 5;
