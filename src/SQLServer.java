@@ -1,8 +1,8 @@
 import java.sql.*;
 
-public class SQLComm {
+public class SQLServer {
     Connection conn = null;
-    public SQLComm() {
+    public SQLServer() {
         //url and login items for SQL database
         String url = "jdbc:sqlserver://localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;integratedSecurity=true;";
         //driver to connect to SQL database to
@@ -19,6 +19,8 @@ public class SQLComm {
             e.printStackTrace();
         }
     }
+    //Method to insert into the table single in the SQL database
+    //Input: dateCopy(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
     public void insertSingle(String dateCopy, int numDays, int cost) {
         Statement statement = null;
         try {
@@ -34,6 +36,8 @@ public class SQLComm {
             e.printStackTrace();
         }
     }
+    //Method to insert into the table dou in the SQL database
+    //Input: dateCopy(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
     public void insertDouble(String dateCopy, int numDays, int cost) {
         Statement statement = null;
         try {
@@ -42,13 +46,15 @@ public class SQLComm {
             e.printStackTrace();
         }
         //SQL query to insert the room
-        String command = "INSERT into double values ('" + dateCopy + "', " + numDays + ", " + cost + ")";
+        String command = "INSERT into dou values ('" + dateCopy + "', " + numDays + ", " + cost + ")";
         try {
             boolean resultSet = statement.execute(command);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+    //Method to insert into the table deluxe in the SQL database
+    //Input: dateCopy(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
     public void insertDeluxe(String dateCopy, int numDays, int cost) {
         Statement statement = null;
         try {
@@ -64,7 +70,8 @@ public class SQLComm {
             e.printStackTrace();
         }
     }
-
+    //Method to insert into the table customer in the SQL database
+    //Input: name(Name of customer), isDisabled(Whether or not the customer is disabled)
     public void insertCustomer(String name, String isDisabled) {
         Statement statement = null;
         try {

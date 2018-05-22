@@ -2,10 +2,10 @@ import java.util.Scanner;
 
 public class Reservations {
     public static void main(String[] args) {
-        double existDiscount = .9;
-        double disabledDiscount = .8;
+        final double EXIST_DISCOUNT = .9;
+        final double DISABLED_DISCOUNT = .8;
         CustomerBook book = new CustomerBook();
-        SQLComm sqlComm = new SQLComm();
+        SQLServer sqlComm = new SQLServer();
         //Calender to store dates & rooms available
         int numSingle = 5, numDouble = 5, numDeluxe = 5;
         Calender cal = new Calender(numSingle, numDouble, numDeluxe);
@@ -45,14 +45,14 @@ public class Reservations {
                     String name = s.nextLine();
                     System.out.println("Are you disabled?");
                     String isDisabled = s.nextLine();
-                    if (book.customerExists(name)) {
-                        cost = (int) (cost*existDiscount);
+                    if (book.checkExists(name)) {
+                        cost = (int) (cost*EXIST_DISCOUNT);
                         System.out.println("Welcome back " + name);
                     } else {
                         book.addCustomer(name, isDisabled);
                     }
                     if (isDisabled.equals("Yes")) {
-                        cost = (int) (cost*disabledDiscount);
+                        cost = (int) (cost*DISABLED_DISCOUNT);
                     }
                     System.out.println("The price will be " + cost + ". Would you like to reserve a room?");
                     String confirm = s.nextLine();
@@ -81,14 +81,14 @@ public class Reservations {
                     System.out.println("Are you disabled?");
 
                     String isDisabled = s.nextLine();
-                    if (book.customerExists(name)) {
-                        cost = (int) (cost*existDiscount);
+                    if (book.checkExists(name)) {
+                        cost = (int) (cost*EXIST_DISCOUNT);
                         System.out.println("Welcome back " + name);
                     } else {
                         book.addCustomer(name, isDisabled);
                     }
                     if (isDisabled.equals("Yes")) {
-                        cost = (int) (cost*disabledDiscount);
+                        cost = (int) (cost*DISABLED_DISCOUNT);
                     }
                     System.out.println("The price will be " + cost + ". Would you like to reserve a room?");
                     String confirm = s.nextLine();
@@ -116,15 +116,15 @@ public class Reservations {
                     String name = s.nextLine();
                     System.out.println("Are you disabled?");
                     String isDisabled = s.nextLine();
-                    if (book.customerExists(name)) {
+                    if (book.checkExists(name)) {
 
-                        cost = (int) (cost*existDiscount);
+                        cost = (int) (cost*EXIST_DISCOUNT);
                     } else {
                         book.addCustomer(name, isDisabled);
                         System.out.println("Welcome back " + name);
                     }
                     if (isDisabled.equals("Yes")) {
-                        cost = (int) (cost*disabledDiscount);
+                        cost = (int) (cost*DISABLED_DISCOUNT);
                     }
                     System.out.println("The price of will be " + cost + ". Would you like to reserve a room?");
                     String confirm = s.nextLine();

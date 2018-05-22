@@ -30,9 +30,8 @@ public class Calender {
             }
         }
     }
-    //Check if the stay goes over the end of the month
-
-    //Go into the Hotel matrix and book the room
+    //Books the days in the correct room matrix
+    //Inputs: day(Day of move in), numDays(Number of days staying), type(int to denote the type of room. 0 = single, 1 = double, 2 = deluxe)
     public void bookDays(int day, int numDays, int type) {
         if (type == 0) {
             for (int i = 0; i < numDays; i++) {
@@ -65,7 +64,9 @@ public class Calender {
             }
         }
     }
-
+    //Gets the offset of of how many days to add to the move in day to get the correct month
+    //Input: month(month of move in)
+    //Output: number of days to that month starting at January
     public int getOffset(Integer month) {
         if (month == 1) {
             return 0;
@@ -94,7 +95,9 @@ public class Calender {
             return 334;
         }
     }
-
+    //Checks if there are any rooms available for the time period.
+    //Inputs: day(integer to denote the day of the month moving in), type(int to denote type of room. See above), offset(number of days retrieved from getOffset), numDays(Length of stay)
+    //Output: returns true if room is available, false otherwise.
     public boolean roomsAvailable(Integer day, int type, int offset, int numDays) {
         boolean flag = true;
         if (type == 0) {
