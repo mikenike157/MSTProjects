@@ -24,8 +24,8 @@ public class SQLServer {
         }
     }
     //Method to insert into the table single in the SQL database
-    //Input: dateCopy(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
-    public void insertSingle(String dateCopy, int numDays, int cost) {
+    //Input: date(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
+    public void insertSingle(String date, int numDays, int cost) {
         Statement statement = null;
         try {
             statement = conn.createStatement();
@@ -33,7 +33,7 @@ public class SQLServer {
             e.printStackTrace();
         }
         //SQL query to insert the room
-        String command = "INSERT into single values ('" + dateCopy + "', " + numDays + ", " + cost + ")";
+        String command = "INSERT into single values ('" + date + "', " + numDays + ", " + cost + ")";
         try {
             boolean resultSet = statement.execute(command);
         } catch (SQLException e) {
@@ -41,8 +41,8 @@ public class SQLServer {
         }
     }
     //Method to insert into the table dou in the SQL database
-    //Input: dateCopy(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
-    public void insertDouble(String dateCopy, int numDays, int cost) {
+    //Input: date(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
+    public void insertDouble(String date, int numDays, int cost) {
         Statement statement = null;
         try {
             statement = conn.createStatement();
@@ -50,7 +50,7 @@ public class SQLServer {
             e.printStackTrace();
         }
         //SQL query to insert the room
-        String command = "INSERT into dou values ('" + dateCopy + "', " + numDays + ", " + cost + ")";
+        String command = "INSERT into dou values ('" + date + "', " + numDays + ", " + cost + ")";
         try {
             boolean resultSet = statement.execute(command);
         } catch (SQLException e) {
@@ -58,8 +58,8 @@ public class SQLServer {
         }
     }
     //Method to insert into the table deluxe in the SQL database
-    //Input: dateCopy(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
-    public void insertDeluxe(String dateCopy, int numDays, int cost) {
+    //Input: date(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
+    public void insertDeluxe(String date, int numDays, int cost) {
         Statement statement = null;
         try {
             statement = conn.createStatement();
@@ -67,7 +67,7 @@ public class SQLServer {
             e.printStackTrace();
         }
         //SQL query to insert the room
-        String command = "INSERT into deluxe values ('" + dateCopy + "', " + numDays + ", " + cost + ")";
+        String command = "INSERT into deluxe values ('" + date + "', " + numDays + ", " + cost + ")";
         try {
             boolean resultSet = statement.execute(command);
         } catch (SQLException e) {

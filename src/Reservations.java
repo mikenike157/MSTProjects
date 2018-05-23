@@ -25,7 +25,6 @@ public class Reservations {
             numGuests = Integer.parseInt(numGuest);
             System.out.println("What date will you arrive? Enter the date as XX-XX"); //Get dates of stay
             String date = s.nextLine();
-            String dateCopy = date;
             //Split by month and day
             String[] dateSplit = date.split("-");
             Integer month = Integer.parseInt(dateSplit[0]);
@@ -33,12 +32,11 @@ public class Reservations {
             System.out.println("How many days will you be staying?"); //Get length of stay
             String numDay = s.nextLine();
             numDays = Integer.parseInt(numDay);
-            //Check if their stay goes over the end of a month
             if (numGuests == 1) { //Room is Single
                 int offset = cal.getOffset(month);
 
                 if (cal.roomsAvailable(day, 0, offset, numDays)) {
-                    Single single = new Single(dateCopy);
+                    Single single = new Single(date);
                     System.out.println("Are you an Adult?"); //Adult check for pricing
                     String adultCheck = s.nextLine();
                     if (adultCheck.equals("Yes")) {
@@ -64,19 +62,18 @@ public class Reservations {
                     if (confirm.equals("Yes")) {
                         //Book the room
                         cal.bookDays(day + offset, numDays, 0); //Go into the calender and mark the room as booked
-                        sqlComm.insertSingle(dateCopy, numDays, cost);
+                        sqlComm.insertSingle(date, numDays, cost);
                         sqlComm.insertCustomer(name, isDisabled);
                         System.out.println("Thank you!");
                     }
                 } else {
                     System.out.print("Im sorry we are out of Singles for this time period. ");
                 }
-                //If the room being reserved is a double
-            } else if (numGuests == 2) {
+            } else if (numGuests == 2) { //If the room being reserved is a double
                 int offset = cal.getOffset(month);
 
                 if (cal.roomsAvailable(day, 0, offset, numDays)) {
-                    Double dou = new Double(dateCopy);
+                    Double dou = new Double(date);
                     System.out.println("How many Adults?");
                     String numAdult = s.nextLine();
                     numAdults = Integer.parseInt(numAdult);
@@ -100,7 +97,7 @@ public class Reservations {
                     String confirm = s.nextLine();
                     if (confirm.equals("Yes")) {
                         cal.bookDays(day + offset, numDays, 1);
-                        sqlComm.insertDouble(dateCopy, numDays, cost);
+                        sqlComm.insertDouble(date, numDays, cost);
                         sqlComm.insertCustomer(name, isDisabled);
                         System.out.println("Thank you!");
                     }
@@ -112,7 +109,7 @@ public class Reservations {
                 int offset = cal.getOffset(month);
 
                 if (cal.roomsAvailable(day, 0, offset, numDays)) {
-                    Deluxe deluxe = new Deluxe(dateCopy);
+                    Deluxe deluxe = new Deluxe(date);
                     System.out.println("How many Adults?");
                     String numAdult = s.nextLine();
                     numAdults = Integer.parseInt(numAdult);
@@ -136,7 +133,7 @@ public class Reservations {
                     String confirm = s.nextLine();
                     if (confirm.equals("Yes")) {
                         cal.bookDays(day + offset, numDays, 2);
-                        sqlComm.insertDeluxe(dateCopy, numDays, cost);
+                        sqlComm.insertDeluxe(date, numDays, cost);
                         sqlComm.insertCustomer(name, isDisabled);
                         System.out.println("Thank you!");
                     }
