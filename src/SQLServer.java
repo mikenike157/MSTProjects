@@ -6,6 +6,7 @@ import java.sql.*;
 
 public class SQLServer {
     Connection conn = null;
+    Statement statement = null;
     public SQLServer() {
         //url and login items for SQL database
         String url = "jdbc:sqlserver://localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;integratedSecurity=true;";
@@ -26,7 +27,6 @@ public class SQLServer {
     //Method to insert into the table single in the SQL database
     //Input: date(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
     public void insertSingle(String date, int numDays, int cost) {
-        Statement statement = null;
         try {
             statement = conn.createStatement();
         } catch (SQLException e) {
@@ -43,7 +43,6 @@ public class SQLServer {
     //Method to insert into the table dou in the SQL database
     //Input: date(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
     public void insertDouble(String date, int numDays, int cost) {
-        Statement statement = null;
         try {
             statement = conn.createStatement();
         } catch (SQLException e) {
@@ -60,7 +59,6 @@ public class SQLServer {
     //Method to insert into the table deluxe in the SQL database
     //Input: date(String of the date checking in), numDays(Int of the number of days staying), cost(Cost of the room)
     public void insertDeluxe(String date, int numDays, int cost) {
-        Statement statement = null;
         try {
             statement = conn.createStatement();
         } catch (SQLException e) {
@@ -77,7 +75,6 @@ public class SQLServer {
     //Method to insert into the table customer in the SQL database
     //Input: name(Name of customer), isDisabled(Whether or not the customer is disabled)
     public void insertCustomer(String name, String isDisabled) {
-        Statement statement = null;
         try {
             statement = conn.createStatement();
         } catch (SQLException e) {
@@ -87,6 +84,22 @@ public class SQLServer {
         String command = "INSERT into customer values ('" + name + "', '" + isDisabled + "')";
         try {
             boolean resultSet = statement.execute(command);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void printSingle() {
+        try {
+            statement = conn.createStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        String command = "Select * from single";
+        try {
+            ResultSet resultSet = statement.executeQuery(command);
+            while (resultSet.next()) {
+                System.out.println(resultSet.getString("date"));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

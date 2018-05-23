@@ -24,7 +24,7 @@ public class CustomerBook {
             Collections.sort(customerList, new CustomComparator());
         }
     }
-    //Checks if the customer has been added to the customer list before
+    //Checks if the customer has been added to the customer list before using binary search
     //Inputs: name(Name of the desired Customer)
     //Output: true if found, if not false
     public boolean checkExists(String name) {

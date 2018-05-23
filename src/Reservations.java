@@ -1,14 +1,18 @@
+import java.io.InputStream;
 import java.util.Scanner;
-
+import java.io.*;
 /**
  * Reservations: Gathers input from user in order to reserve a room at a hotel
  */
 
 public class Reservations {
-    static int numSingle = 5, numDouble = 5, numDeluxe = 5;
+    static int numSingle, numDouble, numDeluxe;
     static final double EXIST_DISCOUNT = .9;
     static final double DISABLED_DISCOUNT = .8;
     public static void main(String[] args) {
+        numSingle = Integer.parseInt(args[0]);
+        numDouble = Integer.parseInt(args[1]);
+        numDeluxe = Integer.parseInt(args[2]);
         int cost; //Cost of the room
         int numDays; //Length of the stay
         int numGuests; //Total number of guests
@@ -72,7 +76,7 @@ public class Reservations {
             } else if (numGuests == 2) { //If the room being reserved is a double
                 int offset = cal.getOffset(month);
 
-                if (cal.roomsAvailable(day, 0, offset, numDays)) {
+                if (cal.roomsAvailable(day, 1, offset, numDays)) {
                     Double dou = new Double(date);
                     System.out.println("How many Adults?");
                     String numAdult = s.nextLine();
@@ -102,13 +106,13 @@ public class Reservations {
                         System.out.println("Thank you!");
                     }
                 } else {
-                    System.out.print("Im sorry we are out of Doubles. For that time period. ");
+                    System.out.print("Im sorry we are out of Doubles for that time period. ");
                 }
 
             } else if (numGuests == 3 || numGuests == 4) { //If the room being reserved is a deluxe
                 int offset = cal.getOffset(month);
 
-                if (cal.roomsAvailable(day, 0, offset, numDays)) {
+                if (cal.roomsAvailable(day, 2, offset, numDays)) {
                     Deluxe deluxe = new Deluxe(date);
                     System.out.println("How many Adults?");
                     String numAdult = s.nextLine();

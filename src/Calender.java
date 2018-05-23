@@ -1,15 +1,17 @@
+import java.util.GregorianCalendar;
+
 /**
  * Calender: Class that holds all of the hotel reservations and does operations on dates
  */
 
 public class Calender {
+
     int numSingle;
     int numDouble;
     int numDeluxe;
     boolean[][] singleArray;
     boolean[][] doubleArray;
     boolean[][] deluxeArray;
-
 
     public Calender(int numSingle, int numDouble, int numDeluxe) {
         this.numSingle = numSingle;
